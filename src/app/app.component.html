@@ -1,0 +1,17 @@
+<div class="root__container">
+  <header>
+    <h1>mktin.tk</h1>
+  </header>
+  <section class="url-shortener">
+    <div class="url-shortener__input">
+      <input (keyup.enter)="shortenUrl()" [formControl]="longUrlInput" type="text" placeholder="Shorten your url">
+      <i *ngIf="!gotShortUrl" (click)="shortenUrl()" class="fas fa-cut fa-2x"></i>
+      <i *ngIf="gotShortUrl" class="fas fa-copy fa-2x"></i>
+    </div>
+    <div [ngClass]="{'show': showErrorMsg}" class="url-shortener__error">
+      <div class="msg-box">
+        Invalid url
+      </div>
+    </div>
+  </section>
+</div>

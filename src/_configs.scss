@@ -1,0 +1,14 @@
+
+$font-inconsolata: 'Inconsolata',monospace;
+$font-open-sans: 'Open Sans Condensed', sans-serif;
+
+
+$primary-color: #73CF5D;
+$secondary-color: #A1E0A2;
+
+$white-color: #fff;
+
+
+@mixin easeOut($time: 0.3) {
+  transition: all #{$time}s ease-out;
+}
