@@ -5,13 +5,15 @@
   <section class="url-shortener">
     <div class="url-shortener__input">
       <input (keyup.enter)="shortenUrl()" [formControl]="longUrlInput" type="text" placeholder="Shorten your url">
-      <i *ngIf="!gotShortUrl" (click)="shortenUrl()" class="fas fa-cut fa-2x"></i>
-      <i *ngIf="gotShortUrl" class="fas fa-copy fa-2x"></i>
+      <div class="action"><i (click)="shortenUrl()" class="fas fa-cut fa-2x"></i></div>
     </div>
     <div [ngClass]="{'show': showErrorMsg}" class="url-shortener__error">
       <div class="msg-box">
         Invalid url
       </div>
+    </div>
+    <div class="shorten-url-items">
+      <app-short-url-item *ngFor="let shortUrlItem of shortUrlItems.slice().reverse()" [shortURlData]="shortUrlItem"></app-short-url-item>
     </div>
   </section>
 </div>

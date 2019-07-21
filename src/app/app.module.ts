@@ -4,14 +4,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UrlShortenerService } from './services/url-shortener.service';
+import { ShortUrlItemComponent } from './components/short-url-item/short-url-item.component';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShortUrlItemComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ClipboardModule,
     ReactiveFormsModule,
     FormsModule
   ],

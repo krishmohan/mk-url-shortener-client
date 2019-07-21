@@ -1,0 +1,58 @@
+@import "src/configs";
+
+.shorten-url-wrapper {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  margin: 10px 0;
+  justify-content: center;
+
+  div {
+    background: $secondary-color;
+  }
+
+  .shorten-url {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.8rem;
+    padding: 0 10px;
+    color: $white-color;
+
+    .original {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .shorten {
+      a {
+        text-decoration: none;
+        color: $white-color;
+      }
+    }
+  }
+
+  .action {
+    width: 3rem;
+    margin: 0 2px;
+    cursor: pointer;
+    @include easeOut();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      color: $white-color;
+    }
+
+    &:hover {
+      background: $white-color;
+
+      i {
+        color: $primary-color;
+      }
+    }
+  }
+}

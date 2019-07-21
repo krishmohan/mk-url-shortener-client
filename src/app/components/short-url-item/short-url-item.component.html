@@ -1,0 +1,7 @@
+<div class="shorten-url-wrapper">
+  <div class="shorten-url">
+    <div class="original">{{shortURlData.longUrl}}</div>
+    <div class="shorten"><a [href]="shortenUrl" target="_blank">{{shortenUrl}}</a></div>
+  </div>
+  <div ngxClipboard [cbContent]="shortenUrl" class="action"><i class="fas fa-copy fa-2x"></i></div>
+</div>

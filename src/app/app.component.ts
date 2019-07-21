@@ -1,5 +1,7 @@
+import { LOCAL_STORAGE_KEY } from './constants/local-storage-keys.constants';
+import { ShortUrl } from './models/url-shortener-reponse.model';
 import { FormControl, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UrlShortenerService } from './services/url-shortener.service';
 
 @Component({
@@ -7,10 +9,11 @@ import { UrlShortenerService } from './services/url-shortener.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  private static readonly LOCAL_STORAGE_KEY = LOCAL_STORAGE_KEY;
   title = 'mk-url-shortener-client';
   showErrorMsg = false;
-  gotShortUrl = false;
+  shortUrlItems: ShortUrl[] = [];
   public longUrlInput = new FormControl(null, [
     Validators.required,
     Validators.pattern(`http(s)?:\/\/(.*)`)
@@ -18,12 +21,20 @@ export class AppComponent {
 
   constructor(private urlShortenerService: UrlShortenerService) { }
 
+  ngOnInit() {
+    const data = localStorage.getItem(AppComponent.LOCAL_STORAGE_KEY);
+    if (data) {
+      this.shortUrlItems = JSON.parse(data);
+      console.log(this.shortUrlItems);
+    }
+  }
+
   shortenUrl() {
     if (this.longUrlInput.valid) {
       this.urlShortenerService.shortenGivenUrl(this.longUrlInput.value).subscribe(
         (response) => {
-          this.longUrlInput.setValue(`mktin.tk/${response.shortUrl}`);
-          this.gotShortUrl = true;
+          this.longUrlInput.setValue('');
+          this.insertShortUrlItem(response);
         },
         (error) => {
           console.log(error);
@@ -39,6 +50,14 @@ export class AppComponent {
     setTimeout(() => {
       this.showErrorMsg = false;
     }, 3000);
+  }
+
+  private insertShortUrlItem(item: ShortUrl) {
+    if (this.shortUrlItems.length >= 3) {
+      this.shortUrlItems.shift();
+    }
+    this.shortUrlItems.push(item);
+    localStorage.setItem(AppComponent.LOCAL_STORAGE_KEY, JSON.stringify(this.shortUrlItems));
   }
 
 }
