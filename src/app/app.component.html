@@ -5,7 +5,10 @@
   <section class="url-shortener">
     <div class="url-shortener__input">
       <input (keyup.enter)="shortenUrl()" [formControl]="longUrlInput" type="text" placeholder="Shorten your url">
-      <div class="action"><i (click)="shortenUrl()" class="fas fa-cut fa-2x"></i></div>
+      <div class="action">
+        <i *ngIf="!loading" (click)="shortenUrl()" class="fas fa-cut fa-2x"></i>
+        <app-loader *ngIf="loading"></app-loader>
+      </div>
     </div>
     <div [ngClass]="{'show': showErrorMsg}" class="url-shortener__error">
       <div class="msg-box">

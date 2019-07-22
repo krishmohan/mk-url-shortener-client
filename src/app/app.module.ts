@@ -6,11 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UrlShortenerService } from './services/url-shortener.service';
 import { ShortUrlItemComponent } from './components/short-url-item/short-url-item.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShortUrlItemComponent
+    ShortUrlItemComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

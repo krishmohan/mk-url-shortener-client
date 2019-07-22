@@ -9,6 +9,14 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+
+  @include mediaMd {
+     font-size: 12px;
+  }
+
+  @include mediaSm {
+    font-size: 8px;
+  }
 }
 
 //Place holder override

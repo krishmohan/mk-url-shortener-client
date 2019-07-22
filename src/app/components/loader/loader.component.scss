@@ -1,0 +1,49 @@
+@import "src/configs";
+
+$spinner-width: 30px;
+$spinner-height: 30px;
+$circle-color: $primary-color;
+$ring-color: $white-color;
+
+:host {
+  position: relative;
+}
+
+.circle-spinner {
+  width: $spinner-width;
+  height: $spinner-height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $circle-color;
+  border-radius: 50%;
+
+  &:after {
+    content: ' ';
+    display: block;
+    width: $spinner-height;
+    height: $spinner-height;
+    border-radius: 50%;
+    position: absolute;
+    border: 3px solid transparent;
+    border-bottom-color: $ring-color;
+    border-top-color: $ring-color;
+    animation: spiny 1s linear infinite;
+  }
+
+}
+
+@keyframes spiny {
+  0% {
+    transform: rotate(0deg) scale(1)
+  }
+
+  50% {
+    transform: rotate(75deg) scale(1.4)
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1)
+  }
+}

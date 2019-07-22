@@ -7,7 +7,6 @@
   overflow: hidden;
 }
 
-
 // Header styles
 header {
   height: 50%;
@@ -50,7 +49,7 @@ header {
     }
 
     .action {
-      width: 3rem;
+      width: 50px;
       margin: 0 2px;
       height: 55px;
       background: $secondary-color;
@@ -86,12 +85,34 @@ header {
     .msg-box {
       height: 50px;
       width: 60%;
-      background: $secondary-color;
-      color: $white-color;
+      background: #ff00006b;
+      color: rgb(68, 67, 65);
       font-size: 1.5rem;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+  }
+}
+
+// media queries
+
+@include mediaMd {
+  header {
+    height: 35%;
+  }
+
+  .url-shortener {
+    height: 65%;
+  }
+}
+
+@include mediaSm {
+  header {
+    height: 30%;
+  }
+
+  .url-shortener {
+    height: 70%;
   }
 }

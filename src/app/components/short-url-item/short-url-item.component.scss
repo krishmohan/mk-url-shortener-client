@@ -24,6 +24,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      margin-right: 10px;
     }
 
     .shorten {
@@ -35,7 +36,7 @@
   }
 
   .action {
-    width: 3rem;
+    width: 50px;
     margin: 0 2px;
     cursor: pointer;
     @include easeOut();
